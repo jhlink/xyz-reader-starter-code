@@ -57,10 +57,23 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i("ArticleListActivity", "onRefresh called from SwipeRefreshLayout");
+
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        refresh();
+                    }
+                }
+        );
+
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getSupportLoaderManager().initLoader(0, null, this);
