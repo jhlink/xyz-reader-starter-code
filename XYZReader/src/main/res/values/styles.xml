@@ -22,7 +22,8 @@
     </style>
 
     <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Lifted android:statusBarColor to resource qualifier v21 -->
+        <!-- Status bar coloring is not supported below API level 21 -->
     </style>
 
 </resources>
