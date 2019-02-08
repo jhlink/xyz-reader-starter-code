@@ -261,6 +261,16 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
+    private void processAndSetArticleStrings() {
+        String fatString = mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n){3,}", "\n\n");
+        fatString = fatString.replaceAll("(\r\n){2}", "\n");
+        fatString = fatString.replaceAll("(\r\n)", " ");
+        paragraphChunks = new ArrayList<>(Arrays.asList(fatString.split("\n")));//"(?!\\b)\\s{2,}(\\b|\\B)")));
+        articleBodyRecyclerTextAdapter.setValues(paragraphChunks);
+        articleBodyRecyclerTextAdapter.notifyDataSetChanged();
+    }
+
+
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
