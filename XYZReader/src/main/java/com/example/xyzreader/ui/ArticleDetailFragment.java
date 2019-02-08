@@ -1,24 +1,21 @@
 package com.example.xyzreader.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -34,6 +31,13 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  * A fragment representing a single Article detail screen. This fragment is
  * either contained in a {@link ArticleListActivity} in two-pane mode (on
@@ -42,6 +46,8 @@ import com.example.xyzreader.data.ArticleLoader;
 public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
+
+    private int mArticleColumnCount = 1;
 
     public static final String ARG_ITEM_ID = "item_id";
     private static final float PARALLAX_FACTOR = 1.25f;
@@ -66,6 +72,9 @@ public class ArticleDetailFragment extends Fragment implements
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
     private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private ArrayList<String> paragraphChunks = new ArrayList<>();
+    private RecyclerView rv_article_paragraph_container;
+    private ArticleBodyRecyclerTextAdapter articleBodyRecyclerTextAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -135,6 +144,8 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
+        initializeParagraphRecyclerView();
+
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
@@ -153,6 +164,21 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
         updateStatusBar();
         return mRootView;
+    }
+
+    private void initializeParagraphRecyclerView() {
+        rv_article_paragraph_container = mRootView.findViewById(R.id.rv_article_body_container);
+
+        Context context = mRootView.getContext();
+        if (mArticleColumnCount <= 1) {
+            rv_article_paragraph_container.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            rv_article_paragraph_container.setLayoutManager(new GridLayoutManager(context, mArticleColumnCount));
+        }
+
+        articleBodyRecyclerTextAdapter = new ArticleBodyRecyclerTextAdapter(paragraphChunks);
+        rv_article_paragraph_container.setAdapter(articleBodyRecyclerTextAdapter);
+        articleBodyRecyclerTextAdapter.notifyDataSetChanged();
     }
 
     private void updateStatusBar() {
@@ -203,10 +229,10 @@ public class ArticleDetailFragment extends Fragment implements
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
 
 
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        // TODO : Set typeface.
+        //bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -232,7 +258,7 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
+            processAndSetArticleStrings();
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -257,7 +283,7 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A" );
-            bodyView.setText("N/A");
+            //bodyView.setText("N/A");
         }
     }
 
