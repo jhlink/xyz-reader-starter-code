@@ -17,6 +17,11 @@
 
 <resources>
 
+    <style name="Theme.Bacon.TextAppearance.ActionBar.Expanded.Title.Inverse" parent="TextAppearance.AppCompat.Title.Inverse">
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+    </style>
+
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/green_500</item>
         <item name="colorPrimaryDark">@color/green_700</item>
