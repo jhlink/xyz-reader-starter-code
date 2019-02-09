@@ -32,9 +32,9 @@
 
                 <ImageView
                     android:id="@+id/photo"
-                    android:contentDescription="@string/content_desc_article_image_banner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/content_desc_article_image_banner"
                     android:scaleType="centerCrop" />
 
                 <View
@@ -83,14 +83,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginTop="@dimen/detail_body_top_margin"
+            android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".ui.ArticleDetailActivity"
             tools:listitem="@layout/item_article_body_tv" />
     </com.example.xyzreader.ui.MaxWidthLinearLayout>
 
-    <ImageButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
         android:layout_width="56dp"
         android:layout_height="56dp"
