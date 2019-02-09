@@ -23,7 +23,7 @@
             app:expandedTitleTextAppearance="@style/Theme.Bacon.TextAppearance.ActionBar.Expanded.Title.Inverse"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/app_name"
-            android:elevation="@dimen/details_collapsing_toolbar_elevation"
+            android:elevation="@dimen/collapsing_toolbar_elevation"
             app:titleEnabled="true">
 
             <FrameLayout

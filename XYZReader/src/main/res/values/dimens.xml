@@ -11,6 +11,6 @@
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="details_body_text_elevation">0dp</dimen>
     <dimen name="details_toolbar_elevation">4dp</dimen>
-    <dimen name="details_collapsing_toolbar_elevation">0dp</dimen>
+    <dimen name="collapsing_toolbar_elevation">0dp</dimen>
 
 </resources>
