@@ -18,7 +18,7 @@
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             app:contentScrim="?colorPrimary"
             app:expandedTitleGravity="bottom|center_horizontal"
-            app:expandedTitleMarginBottom="48dp"
+            app:expandedTitleMarginBottom="52dp"
             app:expandedTitleMarginStart="32dp"
             app:expandedTitleTextAppearance="@style/Theme.Bacon.TextAppearance.ActionBar.Expanded.Title.Inverse"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -45,13 +45,12 @@
 
             <TextView
                 android:id="@+id/article_byline"
-                style="?android:attr/textAppearanceSmall"
+                android:textAppearance="@style/Theme.Bacon.TextAppearance.ActionBar.Subtitle.Inverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
                 android:layout_marginBottom="20dp"
                 android:textAlignment="gravity"
-                android:textColor="#8fff"
                 app:layout_collapseMode="parallax"
                 tools:text="@tools:sample/lorem" />
 
