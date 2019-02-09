@@ -62,7 +62,6 @@
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/list_side_margin"
                 android:layout_marginEnd="@dimen/list_toolbar_side_margin"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_collapseMode="pin"
                 app:titleMarginStart="32dp" />
 
@@ -84,8 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="32dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="@dimen/detail_body_top_margin"
             app:layoutManager="LinearLayoutManager"
             tools:context=".ui.ArticleDetailActivity"
             tools:listitem="@layout/item_article_body_tv" />
