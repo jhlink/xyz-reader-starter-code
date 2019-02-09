@@ -1,6 +1,8 @@
 <resources>
     <!-- list -->
     <dimen name="list_side_margin">64dp</dimen>
+
+    <!-- Presumably, 52 is used instead of 64 for styling reasons. -->
     <dimen name="list_toolbar_side_margin">52dp</dimen> <!-- minus 64 - 12 -->
     <integer name="list_column_count">3</integer>
 
