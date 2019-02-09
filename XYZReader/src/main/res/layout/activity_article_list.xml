@@ -25,7 +25,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/list_toolbar_side_margin"
                 android:layout_marginRight="@dimen/list_toolbar_side_margin"
-                android:elevation="@dimen/details_toolbar_elevation"
+                android:elevation="@dimen/toolbar_elevation"
                 app:layout_collapseMode="pin"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 

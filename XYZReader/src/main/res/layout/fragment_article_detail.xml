@@ -59,7 +59,7 @@
                 android:id="@+id/fragment_article_detail_toolbar"
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="match_parent"
-                android:elevation="@dimen/details_toolbar_elevation"
+                android:elevation="@dimen/toolbar_elevation"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/list_side_margin"
                 android:layout_marginEnd="@dimen/list_toolbar_side_margin"
