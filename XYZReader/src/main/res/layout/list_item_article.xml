@@ -6,6 +6,7 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
+    android:elevation="@dimen/card_elevation"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
