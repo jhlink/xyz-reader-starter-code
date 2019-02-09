@@ -9,5 +9,8 @@
     <dimen name="fab_press_translation_z">12dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="card_elevation">1dp</dimen>
+    <dimen name="details_body_text_elevation">0dp</dimen>
+    <dimen name="details_toolbar_elevation">4dp</dimen>
+    <dimen name="details_collapsing_toolbar_elevation">0dp</dimen>
 
 </resources>

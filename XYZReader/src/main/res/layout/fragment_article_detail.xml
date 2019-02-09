@@ -23,6 +23,7 @@
             app:expandedTitleTextAppearance="@style/Theme.Bacon.TextAppearance.ActionBar.Expanded.Title.Inverse"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/app_name"
+            android:elevation="@dimen/details_collapsing_toolbar_elevation"
             app:titleEnabled="true">
 
             <FrameLayout
@@ -58,6 +59,7 @@
                 android:id="@+id/fragment_article_detail_toolbar"
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="match_parent"
+                android:elevation="@dimen/details_toolbar_elevation"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/list_side_margin"
                 android:layout_marginEnd="@dimen/list_toolbar_side_margin"
@@ -72,7 +74,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:background="@color/detail_body_background_color"
-        android:elevation="0dp"
+        android:elevation="@dimen/details_body_text_elevation"
         android:maxWidth="@dimen/detail_card_max_width"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
